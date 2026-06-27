@@ -1,0 +1,19 @@
+{
+  "name": "00_basicserver",
+  "version": "1.0.0",
+  "description": "my first server",
+  "main": "index.js",
+  "scripts": {
+    "start" : "node index.js"
+  },
+  "keywords": [
+    "server",
+    "exrpress",
+    "node"
+  ],
+  "author": "Rachit Garg",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
