@@ -34,7 +34,7 @@ const UserSchema = new mongoose.Schema(
       unique: true, // must be unique
       lowercase: true, // for lowercase
     },
-    email: {
+    email: {         // order does not matter
       type: String,
       required: true,
       unique: true,
