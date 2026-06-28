@@ -8,16 +8,29 @@
 //    dotenv.config({ path: 'enter_path })
 // but in this case we have to also change package.json and include this
 // " -r dotenv/config --experimental-json-modules " for now,
-// so dev script becomes - 
+// so dev script becomes -
 // "dev": "nodemon -r dotenv/config --experimental-json-modules src/idex.js"
 
-
-import dotenv from "dotenv"
+import dotenv from "dotenv";
 import connectDB from "./db/index.js";
+import { app } from "./app.js";
 // import {app} from './app.js'
 dotenv.config({
-    path: './.env'
-})
-
+  path: "./.env",
+});
 
 connectDB()
+  .then(() => {
+    const PORT = process.env.PORT || 8000;
+    try {
+      app.listen(PORT, () => {
+        console.log(`Server is running on port : ${PORT}`);
+      });
+    } catch (error) {
+      console.log("Server crashed !! ", error);
+      throw error;
+    }
+  })
+  .catch((error) => {
+    console.log("DB Connection failed !! ", error);
+  });
